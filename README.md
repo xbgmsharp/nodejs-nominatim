@@ -48,6 +48,31 @@ $ HOST=127.0.0.1 PORT=8080 DEBUG=nodejs-nominatim node bin/www
 * Point your browser to: [http://localhost:8080/](http://localhost:8080/)
 * Enjoy!
 
+Usage
+-----
+Query format:
+```
+/api/:lat/:lon/:lang?
+
+```
+If not specify the ``lang`` parameter fallback to ``en``.
+
+First query:
+```bash
+$ curl -sv "http://localhost:8080/api/48.858366667/2.2942166667" | jq .
+...
+< Cache-Control: public, max-age=2592000000
+< X-Cache: MISS
+```
+
+Second query:
+```bash
+$ curl -sv "http://localhost:8080/api/:lat/:lon" | jq .
+...
+< Cache-Control: public, max-age=2592000000
+< X-Cache: HIT
+```
+
 Licence
 -------
 The piwigo-openstreetmap plugin for Piwigo is free software:  you can redistribute it
