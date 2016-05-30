@@ -5,7 +5,7 @@
   "homepage": "https://nominatim-xbgmsharp.rhcloud.com/",
   "readmeFilename": "README.md",
   "license": "GPL-3.0+",
-  "version": "0.0.1-ccafd63",
+  "version": "0.0.2-0a8a076",
   "private": true,
   "engines": {
     "node": ">= 0.10.0",
