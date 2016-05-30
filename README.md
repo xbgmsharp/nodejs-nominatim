@@ -53,7 +53,6 @@ Usage
 Query format:
 ```
 /api/:lat/:lon/:lang?
-
 ```
 If not specify the ``lang`` parameter fallback to ``en``.
 
@@ -75,7 +74,7 @@ $ curl -sv "http://localhost:8080/api/:lat/:lon" | jq .
 
 Licence
 -------
-The piwigo-openstreetmap plugin for Piwigo is free software:  you can redistribute it
+nodejs-nominatim is free software:  you can redistribute it
 and/or  modify  it under  the  terms  of the  GNU  General  Public License  as
 published by the Free Software Foundation.
 
