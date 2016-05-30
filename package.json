@@ -21,13 +21,16 @@
     "debug": "~2.1.1",
     "express": "~4.12.2",
     "jade": "~1.9.2",
+    "jsdom": "^3.1.2",
     "mapquest": "^0.2.0",
     "mongodb": "~2.0.28",
     "monk": "~1.0.0",
     "morgan": "~1.5.1",
-    "node-nominatim2": "^0.0.1",
+    "multiparty": "^4.1.2",
+    "node-nominatim2": "^0.1.0",
     "serve-favicon": "~2.2.0",
-    "stylus": "0.42.3"
+    "stylus": "0.42.3",
+    "togeojson": "^0.13.0"
   },
   "bugs": {
     "url": "https://github.com/xbgmsharp/nodejs-nominatim/issues"
