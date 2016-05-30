@@ -15,6 +15,11 @@ router.get('/:lat/:lon/:lang?', function(req, res, next) {
 	{
 		res.json({ 'error': 'Missing params' });
 	}
+	/* Fallback to EN language if not specify */
+	if (!req.params.lang)
+	{
+		req.params.lang = 'en';
+	}
 
 	/* TODO Check valid params, lenght, etc... */
 
