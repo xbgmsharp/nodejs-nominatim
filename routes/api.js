@@ -38,8 +38,8 @@ router.get('/:lat/:lon/:lang?', function(req, res, next) {
 				console.log('DEBUG: Back from nominatim.api');
 				console.log('DEBUG: ' + util.inspect(res.data));
 
-				/* If "result" is not empty then insert and return */
-				if (res.data && res.data) {
+				/* If "result" is not empty and not error then insert and return */
+				if (res.data && res.data && !res.data.error) {
 
 					/* Insert result in DB for cache */
 					db.db_insert(req, res, function (req, res){
@@ -51,6 +51,9 @@ router.get('/:lat/:lon/:lang?', function(req, res, next) {
 						res.json({ 'success': [res.data]});
 					});
 
+				} else if (res.data && res.data && res.data.error) {
+					/* send back nominatim error */
+					res.json({ 'error': res.data.error});
 				} else {
 					/* else send error */
 					res.json({ 'error': 'no result' });
