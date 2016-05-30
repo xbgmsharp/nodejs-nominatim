@@ -18,6 +18,7 @@ exports.db_search = function(req, res, callback) {
 
         var lat = req.params.lat,
             lon = req.params.lon,
+            lang = req.params.lang,
             db = req.db;
 
 	console.log('Searching in DB for: ' + JSON.stringify(req.params));
@@ -28,6 +29,8 @@ exports.db_search = function(req, res, callback) {
         query["lat"] = {$gte: mylat[0] , $lte: mylat[1] };
         mylon = Calc_Max_Min(lon);
         query["lon"] = {$gte: mylon[0] , $lte: mylon[1] };
+	// Set language
+        query["lang"] = lang;
         console.log('Search query:'+ JSON.stringify(query));
 
 	/* Make Query to DB */
@@ -49,12 +52,13 @@ exports.db_insert = function(req, res, callback) {
 
         var lat = req.params.lat,
             lon = req.params.lon,
+            lang = req.params.lang,
             db = req.db,
 	    result = res.data;
 
 	console.log('Adding in DB for: ' + JSON.stringify(req.params));
 	var collection = db.get('reversedata');
-	collection.insert({"lat": parseFloat(lat), "lon": parseFloat(lon), "result": result}, {safe:true}, function(err, data){
+	collection.insert({"lat": parseFloat(lat), "lon": parseFloat(lon), "lang": lang, "result": result}, {safe:true}, function(err, data){
 		if (err) {
 			//res.send({'error':'An error has occurred'});
 			throw err;

@@ -14,9 +14,10 @@ exports.nominatim = function(req, res, callback) {
 
         var lat = req.params.lat,
             lon = req.params.lon,
+            lang = req.params.lang;
 
 	console.log('Calling Nominatim API for: ' + JSON.stringify(req.params));
-	nominatim.reverse({ lat: lat, lon: lon}, function (err, result, data) {
+	nominatim.reverse({ lat: lat, lon: lon, 'accept-language': lang}, function (err, result, data) {
 		if (err) {
 			//res.send({'error':'An error has occurred'});
 			throw err;
